@@ -18,5 +18,5 @@ bootprint openapi openapi.yml static/api
 
 # Arquitetura
 
-![alt text](https://raw.githubusercontent.com/fase-5-grupo-h/desafio-microservices/main/backend/static/architecture.jpg?raw=true)
+![Microservice Architecture](https://github.com/fase-5-grupo-h/desafio-microservices/blob/main/backend/static/architecture.jpg?raw=true)
 
