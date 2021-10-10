@@ -1,0 +1,147 @@
+swagger: "2.0"
+info:
+  description: Swagger file
+  version: "1.0.0"
+  title: Nubank Open API REST Cartões
+consumes:
+  - application/json
+produces:
+  - application/json
+
+basePath: /api
+
+paths:
+  /cartao:
+    get:
+      operationId: domain.cartao.read_all
+      tags:
+        - Cartões
+      summary: Lista de Cartões
+      description: Lista de Cartões
+      responses:
+        200:
+          description: Sucesso na leitura de Cartões
+          schema:
+            type: array
+            items:
+              properties:
+                email_proprietario:
+                  type: string
+                  example: "user1@email.com"
+                email_beneficiario:
+                  type: string
+                  example: "user2@email.com"
+                saldo:
+                  type: string
+                  example: "30.00"
+                prazo:
+                  type: string
+                  example: "2021-10-30 17:43:42"
+                timestamp:
+                  type: string
+                  example: "2021-10-10 17:43:42"
+
+    post:
+      operationId: domain.cartao.create
+      tags:
+        - Cartões
+      summary: Cria um cartão e adiciona na lista de Cartões
+      description: Adiciona na lista de Cartões
+      parameters:
+        - name: card
+          in: body
+          description: Cartão a ser criado
+          required: True
+          schema:
+            type: object
+            properties:
+              email_proprietario:
+                type: string
+                description: Email da pessoa que é proprietária do cartão
+                example: "user4@email.com"
+              email_beneficiario:
+                type: string
+                description: Email da pessoa que vai receber o cartão
+                example: "user4@email.com"
+              saldo:
+                type: string
+                description: Valor disponível no cartão
+                example: "30.00"
+              prazo:
+                type: string
+                description: Prazo limite para usar o cartão
+                example: "2021-10-30 17:43:42"
+      responses:
+        201:
+          description: Sucesso ao criar
+
+  /cartao/{numero_cartao}:
+    get:
+      operationId: domain.cartao.read_one
+      tags:
+        - Cartões
+      summary: Leitura de um cartão da lista de Cartões
+      description: Leitura de um cartão
+      parameters:
+        - name: numero_cartao
+          in: path
+          description: Digitos do cartão
+          type: string
+          required: True
+      responses:
+        200:
+          description: Sucesso na leitura de um cartão
+          schema:
+            properties:
+              email_beneficiario:
+                type: string
+              email_proprietario:
+                type: string
+              numero_cartao:
+                type: string
+              prazo:
+                type: string
+              saldo:
+                type: string
+              timestamp:
+                type: string
+
+    put:
+      operationId: domain.cartao.update
+      tags:
+        - Cartões
+      summary: Debita/resgata um valor de um cartão
+      description: Update na lista
+      parameters:
+        - name: numero_cartao
+          in: path
+          description: Número do cartão
+          type: string
+          required: True
+        - name: transacao
+          in: body
+          schema:
+            type: object
+            properties:
+              valor:
+                type: string
+                example: "1.15"
+      responses:
+        200:
+          description: Sucesso ao atualizar
+
+    delete:
+      operationId: domain.cartao.delete
+      tags:
+        - Cartões
+      summary: Deletar um cartão na lista de Cartões
+      description: Deleta um cartão
+      parameters:
+        - name: numero_cartao
+          in: path
+          type: string
+          required: True
+      responses:
+        200:
+          description: Sucesso ao deletar
+
