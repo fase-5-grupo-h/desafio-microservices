@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "5000:5000"
+    volumes:
+     - .:/code
+  mongo:
+        image: mongo:latest
+        volumes:
+          - data:/data
+        deploy:
+            restart_policy:
+                condition: on-failure
+                delay: 5s
+                max_attempts: 3
+                window: 120s
+        ports:
+            - "27017:27017"
+volumes:
+  data:
