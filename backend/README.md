@@ -6,6 +6,10 @@ Nesse ambiente também há um banco de dados utilizando NoSQL (MongoDB) e a docu
 
 O microserviço criado nesse projeto faz parte do Desafio Microservice da Fase 5 do MBA em Engenharia de Software da FIAP criado para suportar um conceito de uma nova funcionalidade que permite o usuário criar um cartão de crédito temporário com um valor pré-estabelecido e emprestar a qualquer pessoa através do aplicativo oficial da Nubank que é uma Fintech pioneira no segmento financeiro no Brasil, que inovou com seu cartão de crédito sem anuidade e outros serviços financeiros.
 
+# Documentação online
+
+[https://app.swaggerhub.com/apis/Student-Grupo-H/nubank-open_api_rest_cartoes/1.0.0](https://app.swaggerhub.com/apis/Student-Grupo-H/nubank-open_api_rest_cartoes/1.0.0)
+
 # Como executar (passo a passo)
 
 Este projeto possui Docker configurado, para executá-lo você vai precisar do [Docker](https://www.docker.com/) instalado.
