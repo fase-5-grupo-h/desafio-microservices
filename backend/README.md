@@ -20,11 +20,11 @@ Após clonar o projeto em seu ambiente de desenvolvimento execute o comando abai
 
 Agora que está no diretório correto, você deve executar o comando abaixo para montar o ambiente docker em seu computador:
 
-``` docker build --pull --rm -f "backend\Dockerfile" -t desafiomicroservices:latest "backend" ```
+``` docker build --pull --rm -f "Dockerfile" -t desafiomicroservices:latest "backend" ```
 
 Quando a etapa anterior for finalizada, execute o comando a seguir para iniciar o ambiente de desenvolvimento local:
 
-``` docker-compose  -f "backend\docker-compose.yml" up -d --build web mongo  ```
+``` docker-compose  -f "docker-compose.yml" up -d --build web mongo  ```
 
 Se tudo ocorreu bem você pode navegar para o endereço abaixo no seu navegador, onde será possível acessar a documentação e os exemplos da API:
 
