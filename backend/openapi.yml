@@ -34,6 +34,9 @@ paths:
                 saldo:
                   type: string
                   example: "30.00"
+                ativo:
+                  type: boolean
+                  example: True
                 prazo:
                   type: string
                   example: "2021-10-30 17:43:42"
@@ -103,6 +106,8 @@ paths:
                 type: string
               saldo:
                 type: string
+              ativo:
+                type: boolean
               timestamp:
                 type: string
 
@@ -145,3 +150,41 @@ paths:
         200:
           description: Sucesso ao deletar
 
+  /lista-cartao/{ativo}:
+    get:
+      operationId: domain.cartao.read_all_by_status
+      tags:
+        - Cartões
+      summary: Lista de Cartões
+      description: Lista de Cartões
+      parameters:
+        - name: ativo
+          in: path
+          description: True para listar cartões ativos e False para listar cartões inativos
+          type: boolean
+          required: True
+      responses:
+        200:
+          description: Sucesso na leitura de Cartões
+          schema:
+            type: array
+            items:
+              properties:
+                email_proprietario:
+                  type: string
+                  example: "user1@email.com"
+                email_beneficiario:
+                  type: string
+                  example: "user2@email.com"
+                saldo:
+                  type: string
+                  example: "30.00"
+                ativo:
+                  type: boolean
+                  example: True
+                prazo:
+                  type: string
+                  example: "2021-10-30 17:43:42"
+                timestamp:
+                  type: string
+                  example: "2021-10-10 17:43:42"
