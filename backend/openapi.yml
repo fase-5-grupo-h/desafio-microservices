@@ -25,10 +25,10 @@ paths:
             type: array
             items:
               properties:
-                email_proprietario:
+                emailProprietario:
                   type: string
                   example: "user1@email.com"
-                email_beneficiario:
+                emailBeneficiario:
                   type: string
                   example: "user2@email.com"
                 saldo:
@@ -58,11 +58,11 @@ paths:
           schema:
             type: object
             properties:
-              email_proprietario:
+              emailProprietario:
                 type: string
                 description: Email da pessoa que é proprietária do cartão
                 example: "user4@email.com"
-              email_beneficiario:
+              emailBeneficiario:
                 type: string
                 description: Email da pessoa que vai receber o cartão
                 example: "user4@email.com"
@@ -78,7 +78,7 @@ paths:
         201:
           description: Sucesso ao criar
 
-  /cartao/{numero_cartao}:
+  /cartao/{numeroCartao}:
     get:
       operationId: domain.cartao.read_one
       tags:
@@ -86,7 +86,7 @@ paths:
       summary: Leitura de um cartão da lista de Cartões
       description: Leitura de um cartão
       parameters:
-        - name: numero_cartao
+        - name: numeroCartao
           in: path
           description: Digitos do cartão
           type: string
@@ -96,11 +96,11 @@ paths:
           description: Sucesso na leitura de um cartão
           schema:
             properties:
-              email_beneficiario:
+              emailBeneficiario:
                 type: string
-              email_proprietario:
+              emailProprietario:
                 type: string
-              numero_cartao:
+              numeroCartao:
                 type: string
               prazo:
                 type: string
@@ -118,7 +118,7 @@ paths:
       summary: Debita/resgata um valor de um cartão
       description: Update na lista
       parameters:
-        - name: numero_cartao
+        - name: numeroCartao
           in: path
           description: Número do cartão
           type: string
@@ -142,7 +142,7 @@ paths:
       summary: Deletar um cartão na lista de Cartões
       description: Deleta um cartão
       parameters:
-        - name: numero_cartao
+        - name: numeroCartao
           in: path
           type: string
           required: True
@@ -170,10 +170,10 @@ paths:
             type: array
             items:
               properties:
-                email_proprietario:
+                emailProprietario:
                   type: string
                   example: "user1@email.com"
-                email_beneficiario:
+                emailBeneficiario:
                   type: string
                   example: "user2@email.com"
                 saldo:

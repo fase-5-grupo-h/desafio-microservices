@@ -45,7 +45,7 @@ def read_all_by_status(ativo: bool):
     for i in itens_db:
             i.pop('_id') # retira id: criado automaticamente pelo mongodb
             item = dict(i)
-            CARDS[item["numero_cartao"]] = (i)
+            CARDS[item["numeroCartao"]] = (i)
     dict_cartoes = [CARDS[key] for key in sorted(CARDS.keys())]
     cartoes = jsonify(dict_cartoes)
     qtd = len(dict_cartoes)
@@ -57,50 +57,50 @@ def read_all_by_status(ativo: bool):
     return cartoes
 
 
-def read_one(numero_cartao):
-    CARDS = get_dict_from_mongodb("numero_cartao")
-    if numero_cartao in CARDS:
-        card = CARDS.get(numero_cartao)
+def read_one(numeroCartao):
+    CARDS = get_dict_from_mongodb("numeroCartao")
+    if numeroCartao in CARDS:
+        card = CARDS.get(numeroCartao)
     else:
         abort(
-            404, "Cartão {numero_cartao} não encontrado".format(numero_cartao=numero_cartao)
+            404, "Cartão {numeroCartao} não encontrado".format(numeroCartao=numeroCartao)
         )
     return card
 
 
 def create(card):
-    email_proprietario = card.get("email_proprietario", None)
-    email_beneficiario = card.get("email_beneficiario", None)
+    emailProprietario = card.get("emailProprietario", None)
+    emailBeneficiario = card.get("emailBeneficiario", None)
     prazo = card.get("prazo", None)
     saldo = card.get("saldo", None)
-    CARDS = get_dict_from_mongodb("email_proprietario")
-    if email_beneficiario not in CARDS and email_beneficiario is not None and email_proprietario is not None and prazo is not None:
+    CARDS = get_dict_from_mongodb("emailProprietario")
+    if emailBeneficiario not in CARDS and emailBeneficiario is not None and emailProprietario is not None and prazo is not None:
         item = {
-            "email_proprietario": email_proprietario,
-            "email_beneficiario": email_beneficiario,
+            "emailProprietario": emailProprietario,
+            "emailBeneficiario": emailBeneficiario,
             "saldo": saldo,
             "ativo": True,
-            "numero_cartao": card_number_generator(),
+            "numeroCartao": card_number_generator(),
             "prazo": prazo,
             "timestamp": get_timestamp(),
         }
         db.cartoes.insert_one(item)
         return make_response(
-            "{email_beneficiario} criado com sucesso".format(email_beneficiario=email_beneficiario), 201
+            "{emailBeneficiario} criado com sucesso".format(emailBeneficiario=emailBeneficiario), 201
         )
     else:
         abort(
             406,
-            "Cartão associado ao email {email_beneficiario} já existe".format(email_beneficiario=email_beneficiario),
+            "Cartão associado ao email {emailBeneficiario} já existe".format(emailBeneficiario=emailBeneficiario),
         )
 
 
-def update(numero_cartao, transacao):
-    query = { "numero_cartao": numero_cartao }
-    CARDS = get_dict_from_mongodb("numero_cartao")
+def update(numeroCartao, transacao):
+    query = { "numeroCartao": numeroCartao }
+    CARDS = get_dict_from_mongodb("numeroCartao")
 
-    if numero_cartao in CARDS:
-        card = CARDS.get(numero_cartao)
+    if numeroCartao in CARDS:
+        card = CARDS.get(numeroCartao)
         novo_saldo = float(card["saldo"]) - float(transacao.get("valor"))
         if novo_saldo >= 0 and card["ativo"] is not False:
             update = { "$set": {
@@ -109,28 +109,28 @@ def update(numero_cartao, transacao):
                     "timestamp": get_timestamp(), } 
                 }
             db.cartoes.update_one(query, update)
-            CARD = get_dict_from_mongodb("numero_cartao")
-            return CARD[numero_cartao]
+            CARD = get_dict_from_mongodb("numeroCartao")
+            return CARD[numeroCartao]
         else:
             abort(
                 404, "Cartão com saldo insuficiente"
             )
     else:
         abort(
-            404, "Cartão com numeração {numero_cartao} não encontrado".format(numero_cartao=numero_cartao)
+            404, "Cartão com numeração {numeroCartao} não encontrado".format(numeroCartao=numeroCartao)
         )
 
-def delete(numero_cartao):
-    query = { "numero_cartao": numero_cartao }
-    CARDS = get_dict_from_mongodb("numero_cartao")
-    if numero_cartao in CARDS:
-        # del CARDS[numero_cartao]
+def delete(numeroCartao):
+    query = { "numeroCartao": numeroCartao }
+    CARDS = get_dict_from_mongodb("numeroCartao")
+    if numeroCartao in CARDS:
+        # del CARDS[numeroCartao]
         db.cartoes.delete_one(query)
         return make_response(
-            "{numero_cartao} deletado com sucesso".format(numero_cartao=numero_cartao), 200
+            "{numeroCartao} deletado com sucesso".format(numeroCartao=numeroCartao), 200
         )
     else:
         abort(
-            404, "Cartão com numeração {numero_cartao} não encontrado".format(numero_cartao=numero_cartao)
+            404, "Cartão com numeração {numeroCartao} não encontrado".format(numeroCartao=numeroCartao)
         )
 
