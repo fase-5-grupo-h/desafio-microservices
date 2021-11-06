@@ -8,7 +8,7 @@ O microserviço criado nesse projeto faz parte do Desafio Microservice da Fase 5
 
 # Documentação online
 
-[https://app.swaggerhub.com/apis/Student-Grupo-H/nubank-open_api_rest_cartoes/1.0.0](https://app.swaggerhub.com/apis/Student-Grupo-H/nubank-open_api_rest_cartoes/1.0.0)
+[https://app.swaggerhub.com/apis/Student-Grupo-H/nubank-open_api_rest_cartoes/1.0.1](https://app.swaggerhub.com/apis/Student-Grupo-H/nubank-open_api_rest_cartoes/1.0.1)
 
 # Como executar (passo a passo)
 
