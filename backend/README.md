@@ -14,11 +14,7 @@ O microserviço criado nesse projeto faz parte do Desafio Microservice da Fase 5
 
 Este projeto possui Docker configurado, para executá-lo você vai precisar do [Docker](https://www.docker.com/) instalado.
 
-Após clonar o projeto em seu ambiente de desenvolvimento execute o comando abaixo para entrar no diretório do projeto:
-
-``` cd backend ```
-
-Agora que está no diretório correto, você deve executar o comando abaixo para montar o ambiente docker em seu computador:
+Após clonar o projeto em seu ambiente de desenvolvimento, entre na pasta do projeto. Agora que está no diretório correto, você deve executar o comando abaixo para montar o ambiente docker em seu computador:
 
 ``` docker build --pull --rm -f "backend\Dockerfile" -t desafiomicroservices:latest "backend" ```
 
