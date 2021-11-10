@@ -74,7 +74,7 @@ def create(card):
     prazo = card.get("prazo", None)
     saldo = card.get("saldo", None)
     CARDS = get_dict_from_mongodb("emailProprietario")
-    if emailBeneficiario not in CARDS and emailBeneficiario is not None and emailProprietario is not None and prazo is not None:
+    if emailBeneficiario is not None and emailProprietario is not None and prazo is not None:
         item = {
             "emailProprietario": emailProprietario,
             "emailBeneficiario": emailBeneficiario,
