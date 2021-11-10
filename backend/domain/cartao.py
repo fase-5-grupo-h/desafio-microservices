@@ -9,8 +9,6 @@ config = dotenv_values(".env")
 client = MongoClient(config['MONGODB_ENDPOINT']) # Docker
 db = client.tododb
 
-print(config['MONGODB_ENDPOINT'])
-
 def get_dict_from_mongodb(search_key):
     itens_db = db.cartoes.find()
     CARDS = {}
@@ -19,6 +17,10 @@ def get_dict_from_mongodb(search_key):
             item = dict(i)
             CARDS[item[search_key]] = (i)
     return CARDS
+
+def get_dict_from_mongodb_limit_ativo(search_key):
+    itens_db = db.cartoes.find({"emailProprietario": search_key, "ativo": True})
+    return itens_db
 
 def get_timestamp():
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
@@ -73,8 +75,8 @@ def create(card):
     emailBeneficiario = card.get("emailBeneficiario", None)
     prazo = card.get("prazo", None)
     saldo = card.get("saldo", None)
-    CARDS = get_dict_from_mongodb("emailProprietario")
-    if emailBeneficiario is not None and emailProprietario is not None and prazo is not None:
+    CARDS = get_dict_from_mongodb_limit_ativo(emailProprietario)
+    if CARDS.count() is 0 and emailBeneficiario is not None and emailProprietario is not None and prazo is not None:
         item = {
             "emailProprietario": emailProprietario,
             "emailBeneficiario": emailBeneficiario,
@@ -86,12 +88,12 @@ def create(card):
         }
         db.cartoes.insert_one(item)
         return make_response(
-            "{emailBeneficiario} criado com sucesso".format(emailBeneficiario=emailBeneficiario), 201
+            "Catão para {emailBeneficiario} criado com sucesso".format(emailBeneficiario=emailBeneficiario), 201
         )
     else:
         abort(
             406,
-            "Cartão associado ao email {emailBeneficiario} já existe".format(emailBeneficiario=emailBeneficiario),
+            "Já existe um cartão associado ao {emailProprietario} ativo".format(emailProprietario=emailProprietario),
         )
 
 
