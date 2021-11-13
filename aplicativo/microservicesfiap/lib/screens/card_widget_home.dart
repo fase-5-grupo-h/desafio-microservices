@@ -17,8 +17,6 @@ class CardWidgetHome extends StatefulWidget {
 class _CardWidgetHomeState extends State<CardWidgetHome> {
   var format = DateFormat.yMd('pt_BR');
 
-  Payment ultPag = Payment(categoria: 'Imposto', valor: 4690.90);
-
   CreditCard card = CreditCard.emptyCard();
 
   TextSpan setTextCard() {

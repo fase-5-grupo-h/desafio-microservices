@@ -19,10 +19,10 @@ class CreditCard {
 
   static String toJson(CreditCard cartao) {
     Map<String, dynamic> jsonMap = <String, dynamic>{
-      'emailProprietario': cartao.emailProprietario,
-      'emailBeneficiario': cartao.emailBeneficiario,
-      'saldo': cartao.saldo.toString(),
-      'prazo': cartao.prazo.toString(),
+      "emailProprietario": "${cartao.emailProprietario}",
+      "emailBeneficiario": "${cartao.emailBeneficiario}",
+      "saldo": "${cartao.saldo}",
+      "prazo": "${cartao.prazo}",
     };
 
     return jsonMap.toString();
@@ -30,10 +30,22 @@ class CreditCard {
 
   static CreditCard emptyCard() {
     return CreditCard(
-      emailBeneficiario: kUserEmail,
-      emailProprietario: kUserEmail,
-      saldo: 0,
-      prazo: DateTime.now(),
+        emailBeneficiario: kUserEmail,
+        emailProprietario: kUserEmail,
+        saldo: 0,
+        prazo: DateTime.now(),
+        numeroCartao: '');
+  }
+
+  factory CreditCard.fromJsonSingle(dynamic json) {
+    print('Entrou');
+    return CreditCard(
+      emailBeneficiario: json['emailBeneficiario'],
+      emailProprietario: json['emailProprietario'],
+      saldo: double.parse(json['saldo'].toString()),
+      prazo: DateTime.parse(json['prazo'].toString()),
+      ativo: json['ativo'],
+      numeroCartao: json['numeroCartao'].toString(),
     );
   }
 

@@ -20,10 +20,6 @@ class GenericListViewItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(
-              Icons.paid_outlined,
-              size: 60.0,
-            ),
             const SizedBox(
               width: 10.0,
             ),

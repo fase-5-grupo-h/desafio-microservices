@@ -21,6 +21,10 @@ const kUserEmail = 'fiap@fiap.com';
 const kActiveElevatedButtonTextStyle = TextStyle(color: Colors.black);
 const kInactiveElevatedButtonTextStyle = TextStyle(color: Colors.white);
 const kWidgetText = TextStyle(color: Colors.white);
+const kWidgetAllCards = TextStyle(
+  fontSize: 15.0,
+  fontWeight: FontWeight.bold,
+);
 
 final kActiveElevatedButtonStyle = ElevatedButton.styleFrom(
     primary: Colors.white,

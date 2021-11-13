@@ -5,7 +5,6 @@ import 'package:microservicesfiap/screens/all_credit_cards.dart';
 import 'package:microservicesfiap/screens/extract.dart';
 import 'package:microservicesfiap/screens/home_page.dart';
 import 'package:microservicesfiap/screens/payment_page.dart';
-import 'package:microservicesfiap/screens/report_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +23,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => HomePage(),
         '/extrato': (context) => Extract(),
         '/pagamento': (context) => PaymentPage(),
-        '/relatorio': (context) => ReportPage(),
         '/histcartoes': (context) => AllCreditCards(),
       },
     );
