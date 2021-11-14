@@ -27,8 +27,11 @@ Link do Back-end: https://github.com/fase-5-grupo-h/desafio-microservices/blob/m
 Ao executar, caso ocorra algum erro de HTTP ao Gerar Cartão Virtual ou Registrar compra, execute estes passos:
 
 1 - Vá até a pasta flutter\bin\cache e remova o arquivo chamado ``flutter_tools.stamp``
+
 2 - Vá para a pasta flutter\packages\flutter_tools\lib\src\web e abra o arquivo ``chrome.dart``
+
 3 - Encontre a linha que corresponda a ``--disable-extensions``
+
 4 - Adicione ``--disable-web-security`` logo após a linha do Passo 3.
 
 Com estes passos, você deve conseguir executar normalmente.
