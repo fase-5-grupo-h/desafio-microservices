@@ -20,7 +20,7 @@ O aplicativo possui as seguintes telas e funções:
 
 Necessário executar o passo-a-passo do backend, para subir o servidor Docker. Além disso, é necessário que seja executado em um Emulador no computador para que seja possível utilizar a integração.
 
-Link do Back-end: [https://github.com/fase-5-grupo-h/desafio-microservices/blob/main/backend/README.md] (https://github.com/fase-5-grupo-h/desafio-microservices/blob/main/backend/README.md)
+Link do Back-end: https://github.com/fase-5-grupo-h/desafio-microservices/blob/main/backend/README.md
 
 # Troubleshoots
 
