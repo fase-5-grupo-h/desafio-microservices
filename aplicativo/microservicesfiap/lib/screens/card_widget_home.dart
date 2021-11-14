@@ -59,8 +59,6 @@ class _CardWidgetHomeState extends State<CardWidgetHome> {
         card = CreditCard.fromJson(cartaoAtivo);
       }
     });
-
-    print(card.toString());
   }
 
   @override

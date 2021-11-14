@@ -4,13 +4,10 @@ import '../model/quick_view_item.dart';
 class QuickListView extends StatelessWidget {
   final List<QuickViewItem> iconQuickViewList = [
     QuickViewItem('Pagar', Icons.payments_outlined, '/'),
-    QuickViewItem('Extrato', Icons.receipt_outlined, '/extrato'),
-    QuickViewItem('Cartão Virtual', Icons.credit_card_outlined, '/'),
+    QuickViewItem('Extrato', Icons.receipt_outlined, '/'),
     QuickViewItem('Histórico de\ncartões', Icons.credit_card_off_outlined,
         '/histcartoes'),
-    //QuickViewItem('Cartão\nVirtual', Icons.credit_card_outlined),
     QuickViewItem('Agenda-\nmentos', Icons.query_builder_outlined, '/'),
-    //QuickViewItem('Pagar3', Icons.payments_outlined),
     QuickViewItem('Ajuda', Icons.help_outline, '/'),
   ];
 

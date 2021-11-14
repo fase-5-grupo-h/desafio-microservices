@@ -139,7 +139,7 @@ class GenerateVirtualCard extends StatelessWidget {
             ),
             child: Text('Gerar Cartão Virtual'),
             style: ElevatedButton.styleFrom(
-              primary: Colors.grey,
+              primary: Colors.black,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0),
               ),
